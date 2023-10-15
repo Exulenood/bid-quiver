@@ -36,13 +36,13 @@ export const Colors: Colors = {
   },
 };
 
-export const Text: Textprops = {
+export const TextStyle: Textprops = {
   fontFamily: {
-    primary: 'Barlow',
+    primary: 'Barlow_Regular',
   },
   fontSize: {
-    normal: 50,
-    large: 70,
+    normal: 20,
+    large: 30,
   },
 };
 
@@ -52,11 +52,16 @@ export const appStandards = extendTheme({
     Input: {
       variants: {
         neutral: {
-          size: 'md',
-          borderRadius: '20',
+          w: '100%',
+          h: '60px',
+          borderRadius: '5',
           color: 'texts.primary',
           bg: 'surfaces.greyBack',
         },
+      },
+      defaultProps: {
+        fontSize: TextStyle.fontSize.normal,
+        fontFamily: TextStyle.fontFamily.primary,
       },
     },
   },
