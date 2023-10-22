@@ -1,8 +1,10 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFonts } from 'expo-font';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import InputElement from './src/lib/ui-components/InputElement';
+import Login from './src/screens/Login';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -11,20 +13,13 @@ export default function App() {
   if (!fontsLoaded) {
     return null;
   }
+  const Stack = createNativeStackNavigator();
+
   return (
-    <View style={styles.mainContainer}>
-      <InputElement variant="neutral" labelText="Test" labelPos="center" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={Login} options={{headerShown:false}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    marginTop: 60,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'red',
-  },
-});
